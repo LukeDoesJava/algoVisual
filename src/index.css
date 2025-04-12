@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #283044;    
+  --secondary: #78A1BB;  
+  --accent: #BFA89E;     
+  --text: #EBF5EE;       
+  --textDim: #8B786D;  
+  
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: var(--text);
+  background-color: var(--primary);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Example of applying colors to elements */
+body {
+  background-color: var(--primary);
+  color: var(--text);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--accent);
+}
+
+button {
+  background-color: var(--secondary);
+  color: var(--text);
+}
+
+button:hover {
+  background-color: var(--accent);
+}
