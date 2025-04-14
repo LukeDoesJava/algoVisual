@@ -40,6 +40,8 @@ export const MAZES: MazeSelectType[] = [
     {name: "No Maze", value: "NONE"},
     {name: "Binary Tree", value: "BINARY_TREE"},
     {name: "Recursive Division", value: "RECURSIVE_DIVISION"},
+    {name: "Zig Zag", value: "ZIG_ZAG"},
+    {name: "Walls", value: "WALLS"},
 ];
 
 export const SPEEDS : SpeedSelectType[] = [

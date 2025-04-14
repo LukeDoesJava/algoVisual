@@ -1,5 +1,5 @@
 export type AlgorithmType = "BFS" | "DFS" | "DIJKSTRA" | "A_STAR";
-export type MazeType = 'NONE' | 'BINARY_TREE' | 'RECURSIVE_DIVISION';
+export type MazeType = 'NONE' | 'BINARY_TREE' | 'RECURSIVE_DIVISION' | 'ZIG_ZAG' | 'WALLS';
 export interface MazeSelectType{
     name: string;
     value: MazeType;
