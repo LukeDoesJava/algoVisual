@@ -1,6 +1,6 @@
-import { binaryTree } from "../lib/algorithms/maze/binaryTree";
-import recursiveDivision from "../lib/algorithms/maze/recursiveDiv";
-import { wallMaze } from "../lib/algorithms/maze/wallMaze";
+import { binaryTree } from "../algorithms/maze/binaryTree";
+import recursiveDivision from "../algorithms/maze/recursiveDiv";
+import { wallMaze } from "../algorithms/maze/wallMaze";
 import { MAX_COL, MAX_ROW, SPEEDS } from "./constants";
 import { constructBorder } from "./constructBorder";
 import { GridType, MazeType, SpeedType, TileType } from "./types";

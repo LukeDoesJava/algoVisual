@@ -1,13 +1,14 @@
 import { usePathfinder } from "../hooks/usePathfinder";
-import { twMerge } from "tailwind-merge";
+// Removed unused import
 import { MAX_ROW, MAX_COL } from "../utils/constants";
 import { Tile } from "./Tile";
 import { RefObject } from "react";
 import React from "react";
 import { checkIfStartOrEnd, createNewGrid } from "../utils/helperFunc";
+import { TileType } from "../utils/types";
 
 export const Grid = ({ isVisualizationRunningRef }: { isVisualizationRunningRef: RefObject<boolean> }) => {
-    const { grid, setGrid } = usePathfinder();
+    const { grid, setGrid }: { grid: TileType[][]; setGrid: React.Dispatch<React.SetStateAction<TileType[][]>> } = usePathfinder();
     const [isMouseDown, setIsMouseDown] = React.useState<boolean>(false);
 
     const handleMouseDown = (row: number, col: number) => {
@@ -54,9 +55,9 @@ export const Grid = ({ isVisualizationRunningRef }: { isVisualizationRunningRef:
                 }}
             >
                 {/* Grid */}
-                {grid.map((r, rowIndex) => (
+                {grid.map((r: TileType[], rowIndex: number) => (
                     <div key={rowIndex} className="flex">
-                        {r.map((tile, tileIndex) => {
+                        {r.map((tile: TileType, tileIndex: number) => {
                             const { row, col, isFinish, isStart, isPath, isTraversed, isWall } = tile;
                             return (
                                 <Tile

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 export default function FrontPageTxtSort() {
-  const originalText = "The quick brown fox jumps over the lazy dog";
+  const originalText = "Leetcode is the worst thing ever";
   const [sortingText, setSortingText] = useState(originalText);
   const [sortingSteps, setSortingSteps] = useState<string[]>([]);
   const [currentStep, setCurrentStep] = useState(0);

@@ -1,8 +1,8 @@
-import { MAX_COL, MAX_ROW } from "../../../utils/constants";
-import { createWall } from "../../../utils/createWall";
-import { destroyWall } from "../../../utils/destroyWall";
-import { getRandInt, isEqual, sleep } from "../../../utils/helperFunc";
-import { GridType, SpeedType, TileType } from "../../../utils/types";
+import { MAX_COL, MAX_ROW } from "../../utils/constants";
+import { createWall } from "../../utils/createWall";
+import { destroyWall } from "../../utils/destroyWall";
+import { getRandInt, isEqual, sleep } from "../../utils/helperFunc";
+import { GridType, SpeedType, TileType } from "../../utils/types";
 
 export const binaryTree = async (
     grid: GridType,

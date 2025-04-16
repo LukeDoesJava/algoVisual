@@ -1,7 +1,7 @@
-import { getUntraversedNeighbors } from "../../../utils/getUntraversedNeighbors";
-import { isEqual } from "../../../utils/helperFunc";
-import { isInQueue } from "../../../utils/isInQueue";
-import { GridType, TileType } from "../../../utils/types";
+import { getUntraversedNeighbors } from "../../utils/getUntraversedNeighbors";
+import { isEqual } from "../../utils/helperFunc";
+import { isInQueue } from "../../utils/isInQueue";
+import { GridType, TileType } from "../../utils/types";
 
 export const bfs = (grid: GridType, startTile: TileType, endTile: TileType) => {
   const traversedTiles: TileType[] = []; // Initialize an array to store traversed tiles

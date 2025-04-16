@@ -48,3 +48,9 @@ export default tseslint.config({
   },
 })
 ```
+
+
+TODO TASKS:
+- Tailwind config is not being used, this one is gonna suck to fix ngl
+- Navbar does not work on pathfinding page, lol 
+- Pathfinder pages looks noob level, first fix so nav bar on the bottom, then implement page

@@ -1,4 +1,4 @@
-import { GridType, SpeedType, TileType } from "../../../utils/types";
+import { GridType, SpeedType, TileType } from "../../../../utils/types";
 import { horizontalDivision } from "./horizontalDiv";
 import { verticalDivision } from "./verticalDiv";
 

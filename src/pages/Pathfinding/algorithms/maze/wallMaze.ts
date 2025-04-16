@@ -1,6 +1,6 @@
-import { MAX_COL, MAX_ROW, SPEEDS, TILE_STYLE, WALL_TILE_STYLE } from "../../../utils/constants";
-import { GridType, SpeedType } from "../../../utils/types";
-import { sleep } from "../../../utils/helperFunc";
+import { MAX_COL, MAX_ROW, SPEEDS, TILE_STYLE, WALL_TILE_STYLE } from "../../utils/constants";
+import { GridType, SpeedType } from "../../utils/types";
+import { sleep } from "../../utils/helperFunc";
 
 export async function wallMaze(
     grid: GridType,
