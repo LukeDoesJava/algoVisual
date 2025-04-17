@@ -36,23 +36,22 @@ export const Grid = ({ isVisualizationRunningRef }: { isVisualizationRunningRef:
         <div className="relative flex items-center justify-center mt-10">
             {/* Background grid */}
             <div 
-                className="absolute bg-white pointer-events-none" 
-                style={{ 
-                    inset: '0', 
-                    width: `${MAX_COL * 17}px`, 
-                    height: `${MAX_ROW * 17}px`,
-                    margin: 'auto'  // Centers the background
-                }}
+            className="absolute bg-white pointer-events-none" 
+            style={{ 
+                inset: '0', 
+                width: `${MAX_COL * 17}px`, 
+                height: `${MAX_ROW * 17}px`,
+                margin: 'auto',  // Centers the background
+                zIndex: 0        // Ensures it stays behind other elements
+            }}
             ></div>
             
             <div
-                className="flex items-center flex-col justify-center border-sky-300 z-10"
-                style={{ 
-                    minHeight: `${MAX_ROW * 17}px`,
-                    width: `${MAX_COL * 17}px`,
-                    // Using responsive styling in style prop instead of Tailwind classes
-                    // because we have dynamic values
-                }}
+            className="flex items-center flex-col justify-center border-sky-300 z-10"
+            style={{ 
+                minHeight: `${MAX_ROW * 17}px`,
+                width: `${MAX_COL * 17}px`,
+            }}
             >
                 {/* Grid */}
                 {grid.map((r: TileType[], rowIndex: number) => (

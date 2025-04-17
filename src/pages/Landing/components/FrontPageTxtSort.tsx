@@ -54,7 +54,6 @@ export default function FrontPageTxtSort() {
   
   return (
     <div className="bg-gray-900 text-white p-8 font-mono">
-      <div className="max-w-xl mx-auto">
         {/* Container with relative positioning */}
         <div className="relative">
           {/* The static text */}
@@ -75,7 +74,7 @@ export default function FrontPageTxtSort() {
           </div>
         </div>
         
-        {/* Simple controls */}
+        {/* Controls */}
         <div className="mt-16 flex justify-center gap-4">
           <button 
             onClick={() => setIsSorting(!isSorting)}
@@ -95,11 +94,10 @@ export default function FrontPageTxtSort() {
         </div>
         
         {/* Info about the sorting */}
-        <div className="mt-8 text-gray-400">
+        <div className="mt-8 text-textDim">
           <p>Step {currentStep + 1} of {sortingSteps.length}</p>
           <p className="mt-2">Sorting alphabetically using bubble sort algorithm</p>
         </div>
       </div>
-    </div>
   );
 }

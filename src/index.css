@@ -1,44 +1,102 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@plugin "daisyui";
+/* DaisyUI should be configured in tailwind.config.js instead */
 
-:root {
-  --primary: #283044;    
-  --secondary: #78A1BB;  
-  --accent: #BFA89E;     
-  --text: #EBF5EE;       
-  --textDim: #8B786D;  
+@layer base {
+  :root {
+    /* Convert your hex colors to HSL */
+    --background: 222 47% 11%; /* #111827 (your --primary) */
+    --foreground: 0 0% 93%; /* #EBF5EE (your --text) */
+    
+    --card: 222 47% 11%; /* #111827 (primary) */
+    --card-foreground: 0 0% 93%; /* #EBF5EE (text) */
+    
+    --popover: 222 47% 11%; /* #111827 (primary) */
+    --popover-foreground: 0 0% 93%; /* #EBF5EE (text) */
+    
+    --primary: 222 47% 11%; /* #111827 (your original primary) */
+    --primary-foreground: 0 0% 93%; /* #EBF5EE (your text) */
+    
+    --secondary: 215 28% 17%; /* #1F2937 (your secondary) */
+    --secondary-foreground: 0 0% 93%; /* #EBF5EE (your text) */
+    
+    --muted: 215 28% 17%; /* #1F2937 (similar to secondary) */
+    --muted-foreground: 220 14% 65%; /* #9CA3AF (your textDim) */
+    
+    --accent: 19 23% 71%; /* #BFA89E (your accent) */
+    --accent-foreground: 215 28% 17%; /* #1F2937 (readable on accent) */
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 215 28% 17%; /* #1F2937 (secondary) */
+    --input: 215 28% 17%; /* #1F2937 (secondary) */
+    --ring: 19 23% 71%; /* #BFA89E (accent) */
+    
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* Your theme is already dark, so we'll use the same values */
+    --background: 222 47% 11%; /* #111827 (your --primary) */
+    --foreground: 0 0% 93%; /* #EBF5EE (your --text) */
+    
+    --card: 222 47% 11%; /* #111827 (primary) */
+    --card-foreground: 0 0% 93%; /* #EBF5EE (text) */
+    
+    --popover: 222 47% 11%; /* #111827 (primary) */
+    --popover-foreground: 0 0% 93%; /* #EBF5EE (text) */
+    
+    --primary: 222 47% 11%; /* #111827 (your original primary) */
+    --primary-foreground: 0 0% 93%; /* #EBF5EE (your text) */
+    
+    --secondary: 215 28% 17%; /* #1F2937 (your secondary) */
+    --secondary-foreground: 0 0% 93%; /* #EBF5EE (your text) */
+    
+    --muted: 215 28% 17%; /* #1F2937 (similar to secondary) */
+    --muted-foreground: 220 14% 65%; /* #9CA3AF (your textDim) */
+    
+    --accent: 19 23% 71%; /* #BFA89E (your accent) */
+    --accent-foreground: 215 28% 17%; /* #1F2937 (readable on accent) */
+    
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 215 28% 17%; /* #1F2937 (secondary) */
+    --input: 215 28% 17%; /* #1F2937 (secondary) */
+    --ring: 19 23% 71%; /* #BFA89E (accent) */
+    
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
   
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: var(--text);
-  background-color: var(--primary);
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* Example of applying colors to elements */
-body {
-  background-color: var(--primary);
-  color: var(--text);
-}
-
-h1, h2, h3, h4, h5, h6 {
-  color: var(--accent);
-}
-
-button {
-  background-color: var(--secondary);
-  color: var(--text);
-}
-
-button:hover {
-  background-color: var(--accent);
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-accent;
+  }
 }

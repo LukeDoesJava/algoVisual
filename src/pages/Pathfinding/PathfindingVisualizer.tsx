@@ -12,7 +12,7 @@ function PathfindingVisualizer() {
     <PathfinderProvider>
       <TileProvider>
         <SpeedProvider>
-          <div className="h-screen w-screen flex flex-col bg-primary">
+          <div className="h-screen w-screen flex flex-col bg-secondary">
             <Nav isVisualizationRunningRef={isVisualizationRunningRef} />
             <Grid isVisualizationRunningRef={isVisualizationRunningRef} />
           </div>
