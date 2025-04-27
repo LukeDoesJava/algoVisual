@@ -1,4 +1,3 @@
-import { twMerge } from "tailwind-merge";
 import { MAX_COL, MAX_ROW, SPEEDS, WALL_TILE_STYLE } from "./constants";
 import { isRowColEqual } from "./helperFunc";
 import { SpeedType, TileType } from "./types";
