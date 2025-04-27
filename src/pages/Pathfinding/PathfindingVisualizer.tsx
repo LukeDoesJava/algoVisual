@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { Grid } from "./components/Grid";
 import { PathfinderProvider } from "./context/PathfinderContext";
-import { SpeedProvider } from "./context/speedContext";
+import { SpeedProvider } from "./context/SpeedContext";
 import { TileProvider } from "./context/TileContext";
 import { Nav } from "./components/Nav";
 

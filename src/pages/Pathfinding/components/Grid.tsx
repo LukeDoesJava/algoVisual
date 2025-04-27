@@ -1,5 +1,4 @@
-import { usePathfinder } from "../hooks/usePathfinder";
-// Removed unused import
+import { UsePathfinder } from "../hooks/UsePathfinder";
 import { MAX_ROW, MAX_COL } from "../utils/constants";
 import { Tile } from "./Tile";
 import { RefObject } from "react";
@@ -8,7 +7,7 @@ import { checkIfStartOrEnd, createNewGrid } from "../utils/helperFunc";
 import { TileType } from "../utils/types";
 
 export const Grid = ({ isVisualizationRunningRef }: { isVisualizationRunningRef: RefObject<boolean> }) => {
-    const { grid, setGrid }: { grid: TileType[][]; setGrid: React.Dispatch<React.SetStateAction<TileType[][]>> } = usePathfinder();
+    const { grid, setGrid } = UsePathfinder();
     const [isMouseDown, setIsMouseDown] = React.useState<boolean>(false);
 
     const handleMouseDown = (row: number, col: number) => {

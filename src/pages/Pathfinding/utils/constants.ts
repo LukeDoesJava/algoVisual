@@ -1,4 +1,5 @@
 import { MazeSelectType, SpeedSelectType } from "./types";
+import { twMerge } from "tailwind-merge";
 
 export const MAX_ROW = 39;
 export const MAX_COL = 49;
@@ -28,13 +29,13 @@ export const END_TILE_CONFIG = {
     parent : null
 };
 
-export const TILE_STYLE = "lg:w-[17px] md:w-[15px] sm:w-[8px] w-[7px] lg:h-[17px] md:h-[15px] sm:h-[8px] h-[7px] border-t border-r border-gray-800";
+export const TILE_STYLE = "lg:w-[17px] md:w-[15px] sm:w-[8px] w-[7px] lg:h-[17px] md:h-[15px] sm:h-[8px] h-[7px] border-2 border-gray-300";
 
-export const TRAVERSED_TILE_STYLE = TILE_STYLE + " bg-cyan-700";
-export const START_TILE_STYLE = TILE_STYLE + " bg-green-400";
-export const END_TILE_STYLE = TILE_STYLE + " bg-red-400";
-export const WALL_TILE_STYLE = TILE_STYLE + " bg-black";
-export const PATH_TILE_STYLE = TILE_STYLE + " bg-green-700";
+export const TRAVERSED_TILE_STYLE = twMerge(TILE_STYLE, "bg-cyan-700 border-cyan-900");
+export const START_TILE_STYLE = twMerge(TILE_STYLE, "bg-green-400");
+export const END_TILE_STYLE = twMerge(TILE_STYLE, "bg-red-400");
+export const WALL_TILE_STYLE = twMerge(TILE_STYLE, "bg-black border-black");
+export const PATH_TILE_STYLE = twMerge(TILE_STYLE, "bg-green-700 border-green-900");
 
 export const MAZES: MazeSelectType[] = [
     {name: "No Maze", value: "NONE"},

@@ -1,4 +1,4 @@
-import { HomeIcon, MapPinned, Layers } from "lucide-react";
+import { HomeIcon, MapPinned, Layers, Map } from "lucide-react";
 import { Github } from "lucide-react"; // Import icons
 
 export default function SideNavBar() {
@@ -28,7 +28,7 @@ export default function SideNavBar() {
                             {
                                 href: "/pathfinding-visualizer",
                                 label: "PATHFINDING",
-                                icon: <MapPinned className="w-5 h-5" />,
+                                icon: <Map className="w-5 h-5" />,
                                 color: "hover:bg-red-900",
                             },
                             {
@@ -38,11 +38,20 @@ export default function SideNavBar() {
                                 color: "hover:bg-green-400 hover:text-gray-900",
                             },
                             {
+                                href: "/",
+                                label: "MAPS",
+                                icon: <MapPinned className="w-5 h-5" />,
+                                color: "hover:bg-blue-400 hover:text-gray-900",
+                            },
+                            // This should always be dead last
+                            {
                                 href: "https://github.com/LukeDoesJava/algoVisualizer",
                                 label: "CODE",
                                 icon: <Github className="w-5 h-5" />,
                                 color: "hover:bg-black",
                             },
+                            
+
                         ].map(({ href, label, icon, color }) => (
                             <a
                                 key={label}

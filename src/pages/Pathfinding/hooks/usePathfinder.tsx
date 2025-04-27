@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { PathfinderContext } from "../context/PathfinderContext";
 
-export const usePathfinder = () => {
+export const UsePathfinder = () => {
     const context = useContext(PathfinderContext);
 
     if (!context) {

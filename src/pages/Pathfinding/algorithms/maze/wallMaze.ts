@@ -17,7 +17,7 @@ export async function wallMaze(
                     grid[row][col].isWall = true;
                     const tileElement = document.getElementById(`${row}-${col}`);
                     if (tileElement) {
-                        tileElement.classList.add(...WALL_TILE_STYLE.split(" "), "animate-wall");
+                        tileElement.className = `${WALL_TILE_STYLE} animate-wall`; 
                     }
                     // wait for the animation to finish
                     await sleep(20 * SPEEDS.find((s) => s.value === speed)!.value - 5);

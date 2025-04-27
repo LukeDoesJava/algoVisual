@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { SpeedContext } from "../context/speedContext";
+import { SpeedContext } from "../context/SpeedContext";
 
-export const useSpeed = () => {
+export const UseSpeed = () => {
     const context = useContext(SpeedContext);
     if (!context) {
         throw new Error("useSpeed must be used within a SpeedProvider");

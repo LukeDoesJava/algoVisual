@@ -1,3 +1,4 @@
+import { twMerge } from "tailwind-merge";
 import { MAX_COL, MAX_ROW, SPEEDS, WALL_TILE_STYLE } from "./constants";
 import { isRowColEqual } from "./helperFunc";
 import { SpeedType, TileType } from "./types";
@@ -13,16 +14,17 @@ export const createWall = (
     setTimeout(() => {
       for (let col = 0; col < MAX_COL; col++) {
         if (row % 2 === 0 || col % 2 === 0) {
-          if (
+            if (
             !isRowColEqual(row, col, startTile) &&
             !isRowColEqual(row, col, endTile)
-          ) {
+            ) {
             setTimeout(() => {
-              document.getElementById(
-                `${row}-${col}`
-              )!.className = `${WALL_TILE_STYLE} animate-wall`;
+              const tileElement = document.getElementById(`${row}-${col}`);
+              if (tileElement) {
+                  tileElement.className = `${WALL_TILE_STYLE} animate-wall`; 
+              }
             }, delay * col);
-          }
+            }
         }
       }
     }, delay * (MAX_ROW / 2) * row);

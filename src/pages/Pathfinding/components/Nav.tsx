@@ -1,6 +1,6 @@
 import { MutableRefObject, useState } from "react";
-import { usePathfinder } from "../hooks/usePathfinder";
-import { useTile } from "../hooks/useTile";
+import { UsePathfinder } from "../hooks/UsePathfinder";
+import { UseTile } from "../hooks/UseTile";
 import { 
   EXTENDED_SLEEP_TIME,
   MAZES,
@@ -10,12 +10,21 @@ import {
  } from "../utils/constants";
 import { resetGrid } from "../utils/resetGrid";
 import { AlgorithmType, MazeType, SpeedType } from "../utils/types";
-import { Select } from "./Select";
-import { useSpeed } from "../hooks/useSpeed";
+import { UseSpeed } from "../hooks/UseSpeed";
 import { runMazeAlgorithm } from "../utils/runMazeAlgorithm";
-import { PlayButton } from "./PlayButton";
 import { runPathfindingAlgorithm } from "../utils/runPathfindingAlgorithm";
 import { animatePath } from "../utils/animatePath";
+
+// Import shadcn components
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../../../components/ui/select";
+import { Button } from "../../../components/ui/button";
+import { PlayIcon, SoupIcon } from "lucide-react";
 
 export function Nav({
   isVisualizationRunningRef,
@@ -24,7 +33,6 @@ export function Nav({
 }) {
   const [isDisabled, setIsDisabled] = useState(false);
   const {
-    maze,
     setMaze,
     grid,
     setGrid,
@@ -32,9 +40,9 @@ export function Nav({
     setIsGraphVisualized,
     algorithm,
     setAlgorithm,
-  } = usePathfinder();
-  const { startTile, endTile } = useTile();
-  const { speed, setSpeed } = useSpeed();
+  } = UsePathfinder();
+  const { startTile, endTile } = UseTile();
+  const { speed, setSpeed } = UseSpeed();
 
   const handleGenerateMaze = (maze: MazeType) => {
     if (maze === "NONE") {
@@ -83,47 +91,80 @@ export function Nav({
       isVisualizationRunningRef.current = false;
     }, SLEEP_TIME * (traversedTiles.length + SLEEP_TIME * 2) + EXTENDED_SLEEP_TIME * (path.length + 60) * SPEEDS.find((s) => s.value === speed)!.value);
   };
-
   return (
-    <div className="flex items-center justify-center min-h-[4.5rem] border-b shadow-gray-600 sm:px-5 px-0">
-      <div className="flex items-center lg:justify-between justify-center w-full sm:w-[52rem]">
-        <h1 className="lg:flex hidden w-[40%] text-2xl font-bold pl-1">
+    <div className="flex bg-primary items-center justify-center min-h-[4.5rem] border-b-8 border-white shadow-gray-600 sm:px-10 px-5 py-4">
+      <div className="flex items-center lg:justify-between justify-center w-full sm:w-[52rem] gap-8">
+        <h1 className="lg:flex hidden w-[40%] text-2xl font-bold pl-2">
           PATHFINDING//VISUAL
         </h1>
-        <div className="flex sm:items-end items-center justify-start sm:justify-between sm:flex-row flex-col sm:space-y-0 space-y-3 sm:py-0 py-4 sm:space-x-4">
-          <Select
-            label="Maze"
-            value={maze}
-            options={MAZES}
-            isDisabled={isDisabled}
-            onChange={(e) => {
-              handleGenerateMaze(e.target.value as MazeType);
-            }}
-          />
-          <Select
-            label="Graph"
-            value={algorithm}
-            isDisabled={isDisabled}
-            options={PATHFINDING_ALGORITHMS}
-            onChange={(e) => {
-              setAlgorithm(e.target.value as AlgorithmType);
-            }}
-          />
-          <Select
-            label="Speed"
-            value={speed}
-            options={SPEEDS}
-            isDisabled={isDisabled}
-            onChange={(e) => {
-              setSpeed(parseInt(e.target.value) as SpeedType);
-            }}
-          />
-          <PlayButton
-            isDisabled={isDisabled}
-            isGraphVisualized={isGraphVisualized}
-            handlerRunVisualizer={handlerRunVisualizer}
-          />
+        <div className="flex flex-col gap-2">
+          <h1 className="flex text-text font-bold pl-1">Maze Generation</h1>
+          <Select onValueChange={(value) => handleGenerateMaze(value as MazeType)}>
+            <SelectTrigger className="bg-primary border-white w-[200px]">
+              <SelectValue placeholder="Select..." />
+            </SelectTrigger>
+            <SelectContent>
+              {MAZES.map((maze) => (
+                <SelectItem
+                  key={maze.value}
+                  value={maze.value}
+                  disabled={isDisabled}
+                >
+                  {maze.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
+        <div className="flex flex-col gap-2">
+          <h1 className="flex text-text font-bold pl-1">Pathfinder Algorithm</h1>
+          <Select onValueChange={(algo) => setAlgorithm(algo as AlgorithmType)}>
+            <SelectTrigger className="bg-primary border-white w-[200px]">
+              <SelectValue placeholder="Select..." />
+            </SelectTrigger>
+            <SelectContent>
+              {PATHFINDING_ALGORITHMS.map((algo) => (
+                <SelectItem key={algo.value} value={algo.value}>
+                  {algo.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="flex flex-col gap-2">
+          <h1 className="flex text-text font-bold pl-1">Speed</h1>
+          <Select onValueChange={(value) => setSpeed(Number(value) as SpeedType)}>
+            <SelectTrigger className="bg-primary border-white w-[200px]">
+              <SelectValue placeholder="Select..." />
+            </SelectTrigger>
+            <SelectContent>
+              {SPEEDS.map((speed) => (
+                <SelectItem key={speed.value} value={speed.value.toString()}>
+                  {speed.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+        <Button
+          className={`w-[200px] h-[45px] ml-4 ${
+            isGraphVisualized ? "bg-red-500 hover:bg-red-900" : "bg-green-500 hover:bg-lime-900"
+          }`}
+          disabled={isDisabled}
+          onClick={handlerRunVisualizer}
+        >
+          {isGraphVisualized ? (
+            <>
+              <SoupIcon className="mr-2" />
+              Reset
+            </>
+          ) : (
+            <>
+              <PlayIcon className="mr-2" />
+              Run
+            </>
+          )}
+        </Button>
       </div>
     </div>
   );

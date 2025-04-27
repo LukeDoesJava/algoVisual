@@ -1,5 +1,3 @@
-import { useState } from 'react';
-import { ArrowRight, Code, Play, Shuffle } from 'lucide-react';
 import FrontPageTxtSort from './components/FrontPageTxtSort';
 export default function BrutalistAlgorithmVisualizer() {
   
