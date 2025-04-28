@@ -5,28 +5,35 @@ import { RefObject } from "react";
 import React from "react";
 import { checkIfStartOrEnd, createNewGrid } from "../utils/helperFunc";
 import { TileType } from "../utils/types";
+import { useEditTile } from "../hooks/UseEditTile";
 
 export const Grid = ({ isVisualizationRunningRef }: { isVisualizationRunningRef: RefObject<boolean> }) => {
     const { grid, setGrid } = UsePathfinder();
+    const { isDrawing } = useEditTile();
     const [isMouseDown, setIsMouseDown] = React.useState<boolean>(false);
 
     const handleMouseDown = (row: number, col: number) => {
+        // Mouse click
         if (isVisualizationRunningRef.current || checkIfStartOrEnd(row, col)) return;
 
         setIsMouseDown(true);
-        const newGrid = createNewGrid(grid, row, col);
+        const newGrid = createNewGrid(grid, row, col, isDrawing);
+        newGrid[row][col].isWall = isDrawing;
         setGrid(newGrid);
     };
 
     const handleMouseUp = (row: number, col: number) => {
+        // Mouse release
         if (isVisualizationRunningRef.current || checkIfStartOrEnd(row, col)) return;
         setIsMouseDown(false);
     };
 
     const handleMouseEnter = (row: number, col: number) => {
+        // Mouse dragging
         if (isVisualizationRunningRef.current || checkIfStartOrEnd(row, col)) return;
         if (isMouseDown) {
-            const newGrid = createNewGrid(grid, row, col);
+            const newGrid = createNewGrid(grid, row, col, isDrawing);
+            newGrid[row][col].isWall = isDrawing;
             setGrid(newGrid);
         }
     };

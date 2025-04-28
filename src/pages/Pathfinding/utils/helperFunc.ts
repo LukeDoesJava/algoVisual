@@ -1,5 +1,6 @@
 import { MAX_COL, MAX_ROW } from "./constants";
 import { GridType, TileType } from "./types";
+import { UseEditTile } from "../hooks/UseEditTile";
 
 const createRow = (row: number, startTile: TileType, endTile: TileType) => {
   const currentRow = [];

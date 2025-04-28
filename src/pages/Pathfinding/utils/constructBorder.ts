@@ -33,7 +33,7 @@ export async function constructBorder(
                 grid[row][col].isWall = true;
                 const tileElement = document.getElementById(`${row}-${col}`);
                 if (tileElement) {
-                    tileElement.className = `${WALL_TILE_STYLE} animate-wall`; // Add wall style and animation
+                    tileElement.className = `${WALL_TILE_STYLE} animate-wall`; 
                 }
                 await sleep(SLEEP_TIME);
             }
