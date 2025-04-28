@@ -1,6 +1,5 @@
 import { MAX_COL, MAX_ROW } from "./constants";
 import { GridType, TileType } from "./types";
-import { UseEditTile } from "../hooks/UseEditTile";
 
 const createRow = (row: number, startTile: TileType, endTile: TileType) => {
   const currentRow = [];
@@ -34,11 +33,11 @@ export const checkIfStartOrEnd = (row: number, col: number) => {
   );
 };
 
-export const createNewGrid = (grid: GridType, row: number, col: number) => {
+export const createNewGrid = (grid: GridType, row: number, col: number, state: boolean) => {
   const newGrid = grid.slice();
   const newTile = {
     ...newGrid[row][col],
-    isWall: !newGrid[row][col].isWall,
+    isWall: state,
   };
 
   newGrid[row][col] = newTile;

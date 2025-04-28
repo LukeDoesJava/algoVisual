@@ -1,5 +1,5 @@
 import { Button } from "../../../components/ui/button";
-import { PencilIcon, EraserIcon, SquareX } from "lucide-react";
+import { PencilIcon, EraserIcon } from "lucide-react";
 import { useEditTile }  from "../hooks/UseEditTile";
 
 export function ControlPanel() {
