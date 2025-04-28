@@ -8,18 +8,16 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    <>
+    <Router>
       <SideNavBar />
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/pathfinding-visualizer" element={<PathfindingVisualizer />} />
-          <Route path="/sorting-visualizer" element={<SortingVisualizer />} />
-        </Routes>
-      </Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/pathfinding-visualizer" element={<PathfindingVisualizer />} />
+        <Route path="/sorting-visualizer" element={<SortingVisualizer />} />
+      </Routes>
       {/* Footer */}
       <Footer />
-    </>
+    </Router>
   );
 }
 
