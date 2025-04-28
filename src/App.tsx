@@ -8,17 +8,15 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/">
       <SideNavBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/pathfinding-visualizer" element={<PathfindingVisualizer />} />
         <Route path="/sorting-visualizer" element={<SortingVisualizer />} />
       </Routes>
-      {/* Footer */}
       <Footer />
     </Router>
   );
 }
-
 export default App;
