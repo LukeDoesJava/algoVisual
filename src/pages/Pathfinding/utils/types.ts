@@ -1,4 +1,4 @@
-export type AlgorithmType = "BFS" | "DFS" | "DIJKSTRA" | "A_STAR";
+export type AlgorithmType = "BFS" | "DFS" | "DIJKSTRA" | "A_STAR" | "ANALYZE";
 export type MazeType = 'NONE' | 'BINARY_TREE' | 'RECURSIVE_DIVISION' | 'ZIG_ZAG' | 'WALLS';
 export interface MazeSelectType{
     name: string;

@@ -23,8 +23,17 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../../../components/ui/select";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "../../../components/ui/dialog";
 import { Button } from "../../../components/ui/button";
-import { PlayIcon, SoupIcon } from "lucide-react";
+import { InfoIcon, PlayIcon, SoupIcon } from "lucide-react";
+
 
 export function Nav({
   isVisualizationRunningRef,
@@ -32,6 +41,7 @@ export function Nav({
   isVisualizationRunningRef: MutableRefObject<boolean>;
 }) {
   const [isDisabled, setIsDisabled] = useState(false);
+  const [showAnalyzeDialog, setShowAnalyzeDialog] = useState(false);
   const {
     setMaze,
     grid,
@@ -93,6 +103,27 @@ export function Nav({
   };
   return (
     <div className="flex bg-primary items-center justify-center min-h-[4.5rem] border-b-8 border-white shadow-gray-600 sm:px-10 px-5 py-6">
+      <Dialog open={showAnalyzeDialog} onOpenChange={setShowAnalyzeDialog}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Algorithm Analysis</DialogTitle>
+            <DialogDescription className="py-4">
+              The Analysis tool compares the performance of different pathfinding algorithms on your current grid configuration. It will:
+              <ul className="list-disc pl-6 pt-2 space-y-1">
+                <li>Run each algorithm on the same grid</li>
+                <li>Compare execution times</li>
+                <li>Show path lengths and nodes explored</li>
+                <li>Visualize the differences in approach</li>
+              </ul>
+              <br />
+              <b>Note:</b> This may take a while to complete. Furthermore, not every algorithm guarantees shortest path.
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter>
+            <Button className="bg-green-500 hover:bg-lime-900" onClick={() => setShowAnalyzeDialog(false)}>Continue</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
       <div className="flex items-center lg:justify-between justify-center w-full sm:w-[52rem] gap-8 px-4 py-2">
         <h1 className="lg:flex hidden w-[40%] text-2xl font-bold pl-2">
           PATHFINDING//VISUAL
@@ -119,7 +150,13 @@ export function Nav({
         </div>
         <div className="flex flex-col gap-2">
           <h1 className="flex text-text font-bold pl-1">Pathfinder Algorithm</h1>
-          <Select onValueChange={(algo) => setAlgorithm(algo as AlgorithmType)}
+          <Select onValueChange={(algo) => {
+            if (algo === "ANALYZE") {
+              setShowAnalyzeDialog(true);
+              return;
+            }
+            setAlgorithm(algo as AlgorithmType);
+          }}
                   defaultValue={PATHFINDING_ALGORITHMS.find((algo) => algo.name === "Dijkstra")?.value.toString()}>
             <SelectTrigger className="bg-primary border-white w-[200px]">
               <SelectValue placeholder="Select..." />
@@ -127,7 +164,10 @@ export function Nav({
             <SelectContent>
               {PATHFINDING_ALGORITHMS.map((algo) => (
                 <SelectItem key={algo.value} value={algo.value}>
-                  {algo.name}
+                  <div className={"flex items-center"}>
+                    {algo.name === "Analyze" && <InfoIcon className="mr-2"/>}
+                    {algo.name}
+                  </div>
                 </SelectItem>
               ))}
             </SelectContent>

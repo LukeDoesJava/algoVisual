@@ -59,4 +59,5 @@ export const PATHFINDING_ALGORITHMS = [
     {name: "A*", value: "A_STAR"},
     {name: "Breadth First", value: "BREADTH_FIRST"},
     {name: "Depth First", value: "DEPTH_FIRST"},
+    {name: "Analyze", value: "ANALYZE"},
 ]
